@@ -24,7 +24,8 @@ if(turnO){
 turnO=true;
 }box.disabled=true;
  //or else the value will change on clicking the  same button twice  
-checkWinner();
+ count++;
+ checkWinner();
 });
  });
  const showWinner=(winner)=>{
@@ -42,7 +43,7 @@ const enableBoxes = () => {
     box.innerText="";
   }
 };
-
+let count=0;
 
 const  checkWinner=()=>{
     for (let value of winPatterns){
@@ -54,14 +55,28 @@ const  checkWinner=()=>{
         console.log("winner", pos1);
         showWinner(pos1);
       disableBoxes();
-    }
+     return;
+ }
+ }
+ const showDraw = () => {
+  msg.innerText = "There is no winner 😶‍🌫️";
+  msgcont.classList.remove("hide");
+};
+
+ //draw
+ if (count===9){
+  showDraw();
  }
     }
 }
 const resetgame=()=>{
     turnO=true;
+    count=0;
     enableBoxes();
 msgcont.classList.add("hide");
 }
   newbtn.addEventListener("click",resetgame);
     resetbtn.addEventListener("click",resetgame);
+    let draw=()=>{
+
+    }
